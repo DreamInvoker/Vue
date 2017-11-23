@@ -9,5 +9,19 @@ import router from './router'
 //     components: {Hello}
 // })
 const App = Vue.extend({});
-
-router.start(App, '#app');
+//
+// new Vue({
+//     el: '#app',
+//     router: router,
+//     template: '<router-view></router-view>'
+// })
+//
+//runtime-only方式
+new Vue({
+    el: '#app',
+    router: router,
+    render: h => h('router-view')
+})
+//router.init("#app");
+// router.start(App, '#app');
+// router.$mount('#app')
