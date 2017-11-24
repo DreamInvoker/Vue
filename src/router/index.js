@@ -10,7 +10,7 @@ Vue.use(Router)
 //     linkActiveClass: 'active' // v-link激活时添加的class，默认是`v-link-active`
 // })
 const routes = [
-    {path: '/', component: Home}
+    {path: '/home', component: Home}
 ]
 const router = new Router({routes});
 
