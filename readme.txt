@@ -14,7 +14,7 @@ https://github.com/varHarrie/YmxvZw/issues/7
 — dist 编译后的项目代码
 — src 项目源码
 — — apis api封装
-— — components Vue组件
+— — components Vue组件，全局公用组件
 — — libs js工具类
 — — router 路由
 — — — — index.js 路由对象

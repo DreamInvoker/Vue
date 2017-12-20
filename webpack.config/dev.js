@@ -4,7 +4,7 @@ const merge = require('webpack-merge')
 const baseConfig = require('./base')
 const root = path.resolve(__dirname, '..')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = merge(baseConfig, {
     entry: [
         'webpack/hot/dev-server', // 热替换处理入口文件
@@ -26,6 +26,29 @@ module.exports = merge(baseConfig, {
         new HtmlWebpackPlugin({
             template: path.join(root, 'index.html'), // 模板文件
             inject: 'body' // js的script注入到body底部
-        })
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery' ,
+            'jQuery': 'jquery'
+        }),
+        new ExtractTextPlugin("styles.css"),
     ]
 })
+
+
+/*
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+module.exports = {
+    module: {
+        loaders: [
+            { test: /\.css$/, loader: ExtractTextPlugin.extract({
+                fallbackLoader: "style-loader",
+                loader: "css-loader"
+            }) }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin("styles.css")
+    ]
+}*/

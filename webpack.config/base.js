@@ -1,5 +1,6 @@
 const path = require('path');
 const root = path.resolve(__dirname, '..'); // 项目的根目录绝对路径
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: path.join(root, 'src/main.js'),  // 入口文件路径
@@ -27,7 +28,13 @@ module.exports = {
     module: { // 配置loader
         loaders: [
             {test: /\.vue$/, loader: 'vue-loader'}, // 所有.vue结尾的文件，使用vue-loader
-            {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/} // .js文件使用babel-loader，切记排除node_modules目录
+            {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/}, // .js文件使用babel-loader，切记排除node_modules目录
+            {
+                test: /\.css$/, loader: ExtractTextPlugin.extract({
+                fallbackLoader: "style-loader",
+                loader: "css-loader"
+            })
+            }
         ]
     }
 
